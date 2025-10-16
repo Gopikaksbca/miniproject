@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Voting Portal — Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="index.js"></script>
+
+</head>
+<body>
+  <!-- ===========================
+       Fixed navigation (logo left, links right)
+       =========================== -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <strong class="badge">Voting Portal</strong>
+
+    <!-- pushes the links to the far right -->
+    <div class="nav-links" role="menubar">
+      <a href="index.html" class="active" role="menuitem">Home</a>
+      <a href="domestic.html" role="menuitem">Domestic Login</a>
+      <a href="overseas.html" role="menuitem">Overseas Login</a>
+      <a href="ballot.html" role="menuitem">Ballot</a>
+      <a href="contact.html" role="menuitem">Contact</a>
+    
+      <a href="about.html" role="menuitem">About</a>
+    
+</div>
+      
+  </nav>
+
+  <!-- all visible content must be above the overlay layer -->
+  <div class="page-content">
+    <main class="hero" role="main" aria-labelledby="hero-heading">
+      <div class="hero-inner">
+        <h1 id="hero-heading" class="hero-title">Welcome to the Voting Portal</h1>
+
+        <div class="grid" role="region" aria-label="Voter options">
+          <div class="voter-card" role="article" aria-labelledby="domestic-heading">
+            <div>
+              <h2 id="domestic-heading">Domestic Voters</h2>
+              <p>Log in with your Voter ID and Date of Birth.</p>
+            </div>
+            <div>
+              <a href="domestic.html" class="voter-cta" role="button">Domestic Login</a>
+            </div>
+          </div>
+
+          <div class="voter-card" role="article" aria-labelledby="overseas-heading">
+            <div>
+              <h2 id="overseas-heading">Overseas Voters</h2>
+              <p>Log in with your Passport Number and Country of Residence.</p>
+            </div>
+            <div>
+              <a href="overseas.html" class="voter-cta" role="button">Overseas Login</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Optional JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+

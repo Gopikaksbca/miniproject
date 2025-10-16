@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Domestic Login - Voting Portal</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="domestic.js"></script>
+</head>
+<body>
+  
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <strong class="badge">Voting Portal</strong>
+    <div class="nav-links" role="menubar">
+      <a href="index.html" role="menuitem">Home</a>
+      <a href="domestic.html" class="active" role="menuitem">Domestic Login</a>
+      <a href="overseas.html" role="menuitem">Overseas Login</a>
+      <a href="about.html" role="menuitem">About</a>
+      <a href="ballot.html" role="menuitem">Ballot</a>
+      <a href="contact.html" role="menuitem">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Domestic Login Section -->
+  <section class="login-container">
+    <h1>Domestic Voter Login</h1>
+    <p>Please log in with your <b>Voter ID</b> and <b>Date of Birth</b> to proceed.</p>
+
+    <!-- ✅ Corrected form -->
+    <form action="DomesticServlet" method="post" enctype="multipart/form-data" class="login-form">
+      
+      <label for="voterId">Voter_number</label>
+      <input type="text" id="voterId" name="voterNumber" placeholder="Enter Voter ID" required>
+      
+      <label for="dob">date_of_Birth</label>
+      <input type="date" id="dob" name="dob" required>
+
+      <label for="voterFile">Voter_file</label>
+      <input type="file" id="voterFile" name="voterFile" accept=".jpg,.jpeg,.png,.pdf" required>
+
+      <label for="aadharFile">aadhaar_file</label>
+      <input type="file" id="aadharFile" name="aadhaarFile" accept=".jpg,.jpeg,.png,.pdf" required>
+
+      <button type="submit" class="primary-btn">Login</button>
+    </form>
+  </section>
+
+  <!-- Optional Face Modal -->
+  <div id="faceModal" class="modal" aria-hidden="true" role="dialog" aria-label="Face scan dialog" style="display:none;">
+    <div class="modal-content" role="document">
+      <h2>Face Scan</h2>
+      <p>Please position your face inside the frame and click <strong>Capture</strong>.</p>
+
+      <video id="video" autoplay playsinline width="640" height="480" style="background:#000;border-radius:6px;"></video>
+      <canvas id="captureCanvas" width="640" height="480" style="display:none;border-radius:6px;"></canvas>
+
+      <div style="margin-top:12px;">
+        <button id="captureBtn" class="primary-btn">Capture</button>
+        <button id="retakeBtn" style="display:none;">Retake</button>
+        <button id="confirmBtn" style="display:none;">Confirm & Submit</button>
+        <button id="cancelScanBtn">Cancel</button>
+      </div>
+
+      <p id="scanNotice" style="color:#f8d7da;display:none;margin-top:10px"></p>
+    </div>
+  </div>
+
+</body>
+</html>

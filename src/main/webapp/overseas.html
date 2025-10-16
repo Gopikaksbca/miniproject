@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Overseas Login - Voting Portal</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="overseas.js"></script>
+</head>
+<body>
+  <!-- Header -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <strong class="badge">Voting Portal</strong>
+    <div class="nav-links" role="menubar">
+      <a href="index.html" class="active" role="menuitem">Home</a>
+      <a href="domestic.html" role="menuitem">Domestic Login</a>
+      <a href="overseas.html" role="menuitem">Overseas Login</a>
+      <a href="about.html" role="menuitem">About</a>
+      <a href="ballot.html" role="menuitem">Ballot</a>
+      <a href="contact.html" role="menuitem">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Overseas Login Section -->
+  <section class="login-container">
+    <h1>Overseas Voter Login</h1>
+    <p>Please log in with your <b>Passport Number</b>, <b>Aadhaar (if available)</b>, and <b>Country of Residence</b>.</p>
+
+    <form action="OverseasServlet" method="post" enctype="multipart/form-data" class="login-form">
+      <label for="passport">Passport Number</label>
+      <input type="text" id="passport" name="passportNumber" placeholder="Enter Passport Number" required>
+
+      <label for="aadhaar">Aadhaar Number</label>
+      <input type="text" id="aadhaar" name="aadhaarNumber" placeholder="Enter Aadhaar (Optional)">
+
+      <label for="country">Country of Residence</label>
+      <input type="text" id="country" name="countryOfResidence" placeholder="e.g., UAE" required>
+
+      <label for="dob">Date of Birth</label>
+      <input type="date" id="dob" name="dob" required>
+
+      <label for="voterFile">Upload Voter ID</label>
+      <input type="file" id="voterFile" name="voterFile" accept=".jpg,.jpeg,.png,.pdf" required>
+
+      <label for="passFile">Passport</label>
+      <input type="file" id="passFile" name="passFile" accept=".jpg,.jpeg,.png,.pdf" required>
+
+      <label for="aadharFile">Upload Aadhaar</label>
+      <input type="file" id="aadharFile" name="aadharFile" accept=".jpg,.jpeg,.png,.pdf" required>
+
+      <button type="submit" class="primary-btn">Login</button>
+    </form>
+  </section>
+</body>
+</html>

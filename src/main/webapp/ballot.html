@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Voting Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="ballot-page">
+  <div class="ballot-container">
+    <h2>Cast Your Vote</h2>
+    <form id="voteForm" action="BallotServlet" method="post">
+      <!-- Hidden inputs for voter info -->
+      <input type="hidden" name="voterId" id="voterId" value="">
+      <input type="hidden" name="voterType" id="voterType" value="">
+
+      <!-- Candidate 1 -->
+      <label class="candidate">
+        <input type="radio" name="candidate" value="Candidate A" required>
+        <div class="info">
+          <strong>Candidate A</strong>
+          <span>Party Alpha</span>
+        </div>
+        <img src="images/candidateA.png" alt="Candidate A Logo">
+      </label>
+
+      <!-- Candidate 2 -->
+      <label class="candidate">
+        <input type="radio" name="candidate" value="Candidate B">
+        <div class="info">
+          <strong>Candidate B</strong>
+          <span>Party Beta</span>
+        </div>
+        <img src="images/candidateB.png" alt="Candidate B Logo">
+      </label>
+
+      <!-- Candidate 3 -->
+      <label class="candidate">
+        <input type="radio" name="candidate" value="Candidate C">
+        <div class="info">
+          <strong>Candidate C</strong>
+          <span>Party Gamma</span>
+        </div>
+        <img src="images/candidateC.png" alt="Candidate C Logo">
+      </label>
+
+      <button type="submit" class="vote-btn">Submit Vote</button>
+    </form>
+  </div>
+
+  <script src="ballot.js"></script>
+</body>
+</html>

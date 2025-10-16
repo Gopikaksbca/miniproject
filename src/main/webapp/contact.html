@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Voting Portal — Contact</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="contact-page">
+  <!-- Navigation -->
+  <nav class="nav">
+    <strong class="badge">Voting Portal</strong>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="domestic.html">Domestic Login</a>
+      <a href="overseas.html">Overseas Login</a>
+      <a href="ballot.html">Ballot</a>
+      <a href="contact.html" class="active">Contact</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+
+  <!-- Contact Page Content -->
+  <div class="page-content">
+    <div class="contact-container">
+      <h1>Contact Us</h1>
+      <p>If you have any queries, feedback, or issues, please reach out using the form below.</p>
+
+      <form class="contact-form" action="mailto:your-email@example.com" method="post" enctype="text/plain">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your full name" required />
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" placeholder="Type your message here..." required></textarea>
+
+        <button type="submit" class="primary-btn">Send Message</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
