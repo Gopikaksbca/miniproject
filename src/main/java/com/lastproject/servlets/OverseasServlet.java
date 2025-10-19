@@ -1,19 +1,10 @@
 package com.lastproject.servlets;
 
 import java.io.*;
+import java.sql.*;
 import javax.servlet.*;
-import javax.servlet.annotation.WebServlet;
+import javax.servlet.annotation.*;
 import javax.servlet.http.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 @WebServlet("/OverseasServlet")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2,   // 2MB

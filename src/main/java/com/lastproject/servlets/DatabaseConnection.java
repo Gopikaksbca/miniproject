@@ -1,15 +1,24 @@
 package com.lastproject.servlets;
 
-import java.sql.*;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 public class DatabaseConnection {
-
-    private static final String URL = "jdbc:mysql://localhost:3306/voting_db";
-    private static final String USER = "root";       // your MySQL username
-    private static final String PASSWORD = "password"; // your MySQL password
-
-    public static Connection getConnection() throws SQLException, ClassNotFoundException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        return DriverManager.getConnection(URL, USER, PASSWORD);
+    public static Connection getConnection() {
+        Connection con = null;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/votingdb",
+                "root",
+                "student"
+            );
+            System.out.println("✅ Database connection successful!");
+        } catch (Exception e) {
+            System.out.println("❌ Database connection failed!");
+            e.printStackTrace();
+        }
+        return con;
     }
 }

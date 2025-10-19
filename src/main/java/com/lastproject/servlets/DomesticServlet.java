@@ -1,15 +1,22 @@
 package com.lastproject.servlets;
 
 import java.io.*;
+import java.sql.*;
 import javax.servlet.*;
-import javax.servlet.annotation.WebServlet;
+import javax.servlet.annotation.*;
 import javax.servlet.http.*;
 
 @WebServlet("/DomesticServlet")
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2,   // 2MB
+                 maxFileSize = 1024 * 1024 * 10,        // 10MB
+                 maxRequestSize = 1024 * 1024 * 50)     // 50MB
 public class DomesticServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
 
         String voterNumber = request.getParameter("voterNumber");
         String dob = request.getParameter("dob");
@@ -22,14 +29,14 @@ public class DomesticServlet extends HttpServlet {
         File uploadDir = new File(uploadPath);
         if (!uploadDir.exists()) uploadDir.mkdir();
 
-        // Save files
         String voterFileName = voterFile.getSubmittedFileName();
         String aadhaarFileName = aadhaarFile.getSubmittedFileName();
+
         voterFile.write(uploadPath + File.separator + voterFileName);
         aadhaarFile.write(uploadPath + File.separator + aadhaarFileName);
 
         try {
-            Connection con = DatabaseConnection.getConnection();
+            Connection con = DatabaseConnection.getConnection(); // Your DB connection class
             PreparedStatement ps = con.prepareStatement(
                 "SELECT * FROM domestic_voters WHERE voter_number=? AND date_of_birth=?"
             );
@@ -38,7 +45,7 @@ public class DomesticServlet extends HttpServlet {
 
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                // Login successful → Update uploaded files paths
+                // Login success → Update uploaded file paths
                 PreparedStatement psUpdate = con.prepareStatement(
                     "UPDATE domestic_voters SET voter_file=?, aadhaar_file=? WHERE voter_number=?"
                 );
@@ -49,13 +56,13 @@ public class DomesticServlet extends HttpServlet {
 
                 response.sendRedirect("ballot.html"); // Redirect to voting page
             } else {
-                response.getWriter().println("<h3>Login Failed! Check your Voter ID or DOB.</h3>");
+                out.println("<h3>Login Failed! Check your Voter ID or Date of Birth.</h3>");
             }
 
             ps.close();
             con.close();
         } catch (Exception e) {
-            e.printStackTrace(response.getWriter());
+            e.printStackTrace(out);
         }
     }
 }
