@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("voteForm");
 
   form.addEventListener("submit", async (e) => {
-    e.preventDefault(); // prevent default to handle submission manually
+    e.preventDefault();
 
     const choiceEl = document.querySelector("input[name='candidate']:checked");
     if (!choiceEl) {
@@ -10,23 +10,28 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const candidate = choiceEl.value;
-    const voterId = document.getElementById("voterId").value;
-    const voterType = document.getElementById("voterType").value;
+    const choice = choiceEl.value;
 
-    const formData = new FormData();
-    formData.append("candidate", candidate);
-    formData.append("voterId", voterId);
-    formData.append("voterType", voterType);
-
+    // Send to backend API
     try {
-      const res = await fetch("BallotServlet", { method: "POST", body: formData });
-      const text = await res.text();
-      alert(text); // show servlet response
-      window.location.href = "index.html"; // redirect to home
+      const res = await fetch("/submit-vote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ candidate: choice })
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        alert("✅ Your vote has been successfully submitted!");
+        // Optionally redirect to a thank you page
+        // window.location.href = "thankyou.html";
+      } else {
+        alert("❌ Vote submission failed: " + data.message);
+      }
     } catch (err) {
-      console.error("Vote submission failed:", err);
-      alert("⚠️ Vote submission failed. Please try again.");
+      console.error("Error submitting vote:", err);
+      alert("⚠️ Error submitting vote. Please try again.");
     }
   });
 });

@@ -25,7 +25,7 @@ public class BallotServlet extends HttpServlet {
 
         try {
             // ✅ Include your DB connection here
-            con = DatabaseConnection.getConnection(); 
+            con = DBConnection.getConnection(); 
 
             // 1️⃣ Check if voter has already voted
             String voterTable = voterType.equalsIgnoreCase("domestic") ? "domestic_voters" : "overseas_voters";
